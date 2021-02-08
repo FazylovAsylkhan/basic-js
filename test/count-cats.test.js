@@ -45,6 +45,7 @@ describe('Count cats!', () => {
     });
 
     it.optional('level 0.2', () => {
+      
       assert.equal(countCats([
         ['##', 'dd', '00'],
         ['^ ^', '..', 'ss'],
