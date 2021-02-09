@@ -1,32 +1,15 @@
-function createDreamTeam(members) {
-  if (!Array.isArray(members)) return false
+function getSeason(date) {
+  date = new Date(date);
+  console.log(date);
+  let month = date.getMonth()
+  console.log(month);
+    
+    if (month >=0 && month < 3) console.log('winter');
+    if (month >= 3 && month < 6) console.log('spring');
+    if (month >= 6 && month < 9) console.log('summer');
+    if (month >= 9 && month < 12) console.log('authom');
 
-  let newArr = [];
-    if (members !== undefined && members !== null) {
-      for (let i = 0; i < members.length; i++) {
-        if (typeof members[i] == 'string') {
-          let j = 0;  
-
-          while (true) {
-            if (members[i][j] == ' ') {
-              i++;
-            } else {
-              newArr.push(members[i])
-              break;
-            }
-          }
-        } 
-      }
-
-      console.log(newArr.map(item => item[0].toUpperCase()).join(''));
-    }        
-
-  return false;
+    return false;
 };
 
-createDreamTeam([
-  'Amelia',
-  'Grace',
-  'Lily',
-  'Ruby',
-])
+console.log(typeof new Date(1, 6, 13, 23, 45, 11, 500));
