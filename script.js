@@ -1,33 +1,19 @@
-const chainMaker = {
-  arr: [],
-  getLength() {
-    this.arr.push(this.arr.length);
-    return this;
-  },
-  addLink(value = ' ') {
-    this.arr.push(String(value));
-    return this;
-  },
-  removeLink(position) {
-    if (!Number.isInteger(position) || this.arr[position] == undefined) throw new Error('Error');
-    console.log(position);
-    console.log(this.arr);
-    this.arr.splice(position - 1, 1);
-    console.log(this.arr);
-    return this;
-  },
-  reverseChain() {
-    this.arr.reverse();
-    return this;
-  },
-  finishChain() {
-    let result = `( ${this.arr[0]} )`;
+'use strict'
 
-    for (let i = 1; i < this.arr.length; i++) {
-      result += `~~( ${this.arr[i]} )`;
+class DepthCalculator {
+  calculateDepth(arr) {
+    let newArr = arr.filter(item => Array.isArray(item));
+
+    if (newArr.length == 0) {
+      return 1
+    } else {
+      newArr = newArr.map(item => this.calculateDepth(item)).sort((a,b) => a - b)
+      console.log(newArr);
+      return 1 + newArr[newArr.length - 1];
     }
-
-    console.log(result);
   }
 };
-chainMaker.addLink('GHI').addLink(null).reverseChain().addLink(333).reverseChain().reverseChain().addLink(0).reverseChain().reverseChain().addLink('GHI').finishChain()
+
+
+const instance = new DepthCalculator();
+instance.calculateDepth([[5, 4], [2],2,[4]]);
